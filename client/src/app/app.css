@@ -1,4 +1,4 @@
-.app-container {
+﻿.app-container {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -16,8 +16,11 @@
 
 .menu-header h1 {
   font-size: 1.5rem;
+  margin-top: 0;
   margin-bottom: 2rem;
   color: #333;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .menu-list {
