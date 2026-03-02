@@ -1,12 +1,7 @@
 ﻿import {Component, signal} from '@angular/core';
-import {form, FormField, schema} from '@angular/forms/signals';
+import {form, FormField, hidden, schema} from '@angular/forms/signals';
 import {JsonPipe} from '@angular/common';
 
-// This is a placeholder for 'hidden' as it's not standard but requested in the example.
-// In a real scenario, this would be part of the signal-forms library or a custom extension.
-const hidden = (path: any, condition: (options: { valueOf: (field: any) => any }) => boolean) => {
-  // Mock implementation for the example
-};
 
 interface BillPayFormModel {
   name: string;
@@ -24,9 +19,7 @@ interface BillPayFormModel {
 }
 
 const billPaySchema = schema<BillPayFormModel>((billPay) => {
-  // Hide credit card details when user has selected a method other than credit card.
   hidden(billPay.method.card, ({valueOf}) => valueOf(billPay.method.type) !== 'card');
-  // Hide bank account details when user has selected a method other than bank account.
   hidden(billPay.method.bank, ({valueOf}) => valueOf(billPay.method.type) !== 'bank');
 });
 
